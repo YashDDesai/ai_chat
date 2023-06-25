@@ -1,0 +1,3 @@
+# 
+POST http://localhost:3000/tickets
+Content-Type: application/json

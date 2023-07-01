@@ -1,7 +1,24 @@
-POST http://localhost:3000/chats
+###
+POST http://localhost:3000/api/threads
 Content-Type: application/json
 
 {
-  "token": "7309926e-c6a5-4f19-a253-6a50c4c47af0",
-  "message": "first movement"
+  "participants":""
+}
+
+###
+POST http://localhost:3000/api/messages
+Content-Type: application/json
+
+{
+  "threadId":"", 
+  "userId":"", 
+  "body":""
+}
+###
+POST http://localhost:3000/api/messages/:threadId
+Content-Type: application/json
+
+{
+  "threadId":""
 }

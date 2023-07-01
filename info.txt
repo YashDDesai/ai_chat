@@ -1,0 +1,49 @@
+1. For, a Customer support system through chat, user should be able send and receive messages.
+
+2. Write APIs for that,
+3. Write custom functions and logics for that.
+
+4. Chat APIs must be capable of managing create new tickets before starting new issue.
+
+5. Write backend triggers to delete all chats older than a week only for closed tickets.
+6. Also write trigger to close ticket which have no chats since two weeks.
+
+7. when new chat starts ...
+
+```
+API (send_message)
+
+1> create conversation thread
+2> add participants to thread
+3> save message with customer_userID
+
+4> generate response from Model(ex. chatGPT)
+
+5> save response with chatGPT_userID
+```
+
+8. API (read_messages)
+
+```
+1> filter list of conversation threads where customer_userID has participated
+2> group messages according to their thread ids
+3> each message must have sender_userID
+```
+
+Database schema given bellow:
+
+```
+thread: threadId(int)[PK]
+
+participants: thread_threadId(int), user_userID(int)
+
+message: messageId(int)[PK], sendDate(timestamp), body(varchar 1000), thread_threadId(int), user_user_ID(int)
+
+user: userId(int)[PK], userName(varchar 45)
+
+message_read_state: message_messageId(int), thread_threadId(int), user_user_ID(int)
+```
+
+- Use express, typescript and mysql2(promise pool)
+- do needful changes in db schema if needed
+- follow best practices for RESTfull APIs and SQL Database Schema
